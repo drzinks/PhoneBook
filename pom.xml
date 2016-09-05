@@ -99,6 +99,9 @@
 				<groupId>org.apache.tomcat.maven</groupId> <!--start server from mvn -->
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
+				<configuration>
+				<contextReloadable>true</contextReloadable>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
