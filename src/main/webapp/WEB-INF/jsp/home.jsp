@@ -15,7 +15,6 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Address</th>
                 <th>Telephone</th>
                 <th>Action</th>
                  
@@ -24,8 +23,7 @@
                     <td>${status.index + 1}</td>
                     <td>${contact.name}</td>
                     <td>${contact.email}</td>
-                    <td>${contact.address}</td>
-                    <td>${contact.telephone}</td>
+                    <td>${contact.phone}</td>
                     <td>
                         <a href="/editContact?id=${contact.id}">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
