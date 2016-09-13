@@ -5,9 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.RequestMatchResult;
 
 import com.drzinks.dao.ContactCrudRepository;
 import com.drzinks.dao.ContactDAO;
@@ -20,26 +23,28 @@ import com.drzinks.domain.Contact;
 public class WelcomeController {
 
 	@Autowired
-	private ContactDAO contactDao;
-	
-	@Autowired
 	private ContactCrudRepository contactCrudRepository;
-//    @RequestMapping("/welcome")
-//    public @ResponseBody WelcomeDTO returnWelcomeView() {
-//        WelcomeDTO welcomeDTO = new WelcomeDTO();
-//        welcomeDTO.setWelcomeMessage("welc message");
-//        welcomeDTO.setTitle("tytul");
-//        return welcomeDTO;
-//    }
 
+	@RequestMapping(value = "/", method = RequestMethod.GET) 			// home 
+	public ModelAndView returnWelcomeView(ModelAndView modelAndView) {
+		List<Contact> listContact = contactCrudRepository.findAll();
+		modelAndView.addObject("listContact", listContact);
+		modelAndView.setViewName("home");
+		return modelAndView;
+	}
 
-  @RequestMapping(value="/")
-  public ModelAndView returnWelcomeView(ModelAndView model) {
-//	  List<Contact> listContact = contactDao.getFirstContact();
-	  List<Contact> listContact = contactCrudRepository.findAll();
-	  model.addObject("listContact", listContact);
-	  model.setViewName("home");
-      return model;
-  }
+	@RequestMapping(value = "/newContact", method = RequestMethod.GET) // homepage   -> newContact 
+	public ModelAndView addNewContact(ModelAndView modelAndView) {
+		Contact newContact = new Contact();
+		modelAndView.addObject("contact", newContact);
+		modelAndView.setViewName("contactForm");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/saveContact", method = RequestMethod.POST) // newContact ->  homepage
+	public ModelAndView submitNewContact(@ModelAttribute Contact contact) {
+		contactCrudRepository.save(contact);
+		return new ModelAndView("redirect:/");
+	}
 
 }
