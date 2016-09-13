@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Phone Book by drzinks</title>
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<!-- <script type='text/javascript' src='../PhoneBook/src/main/webapp/WEB-INF/jsp/jquery-3.1.0.min.js' ></script> -->
     </head>
     <body>
         <div align="center">
@@ -15,7 +17,7 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Telephone</th>
+                <th>Phone</th>
                 <th>Action</th>
                  
                 <c:forEach var="contact" items="${listContact}" varStatus="status">
@@ -27,9 +29,8 @@
                     <td>
                         <a href="/editContact?id=${contact.id}">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/deleteContact?id=${contact.id}">Delete</a>
+                        <a href="" onclick="$.ajax({url: '/PhoneBook/contact/${contact.id}', method: 'DELETE'})" >Delete</a>  
                     </td>
-                             
                 </tr>
                 </c:forEach>             
             </table>
