@@ -4,6 +4,7 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" 
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
   http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
  http://www.springframework.org/schema/beans 
@@ -11,7 +12,9 @@
  http://www.springframework.org/schema/context 
  http://www.springframework.org/schema/context/spring-context-4.0.xsd
  http://www.springframework.org/schema/tx
- http://www.springframework.org/schema/tx/spring-tx.xsd">
+ http://www.springframework.org/schema/tx/spring-tx.xsd
+ http://www.springframework.org/schema/data/jpa 
+ http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
  
 	<context:component-scan base-package="com.drzinks" />
 	<mvc:annotation-driven />
@@ -21,7 +24,6 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
 	
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -39,6 +41,7 @@
 			</props>
 		</property>
 	</bean>
+	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -54,4 +57,7 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	
+	<jpa:repositories base-package="com.drzinks"></jpa:repositories>
+	
 </beans>

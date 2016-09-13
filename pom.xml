@@ -9,11 +9,12 @@
 	<url>http://maven.apache.org</url>
 	<dependencies>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework.data</groupId> -->
-		<!-- <artifactId>spring-data-jpa</artifactId> -->
-		<!-- <version>1.8.0.RELEASE</version> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.10.1.RELEASE</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -60,22 +61,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
-		<!--json<->java -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.fasterxml.jackson.core</groupId> -->
-		<!-- <artifactId>jackson-databind</artifactId> -->
-		<!-- <version>2.7.2</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.fasterxml.jackson.core</groupId> -->
-		<!-- <artifactId>jackson-annotations</artifactId> -->
-		<!-- <version>2.7.2</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.fasterxml.jackson.core</groupId> -->
-		<!-- <artifactId>jackson-core</artifactId> -->
-		<!-- <version>2.7.2</version> -->
-		<!-- </dependency> -->
 
 		<!-- Servlet Spec -->
 		<dependency>
@@ -96,7 +81,7 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
- 			<groupId>javax.el</groupId>  <!--in order to avoid el exceptions! -->
+			<groupId>javax.el</groupId>  <!--in order to avoid el exceptions! -->
 			<artifactId>el-api</artifactId>
 			<version>2.2</version>
 			<scope>provided</scope>
