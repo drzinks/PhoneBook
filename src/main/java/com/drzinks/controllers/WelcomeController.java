@@ -34,7 +34,7 @@ public class WelcomeController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/newContact", method = RequestMethod.GET) // homepage   -> newContact 
+	@RequestMapping(value = "/contacts", method = RequestMethod.GET) // homepage   -> newContact 
 	public ModelAndView addNewContact(ModelAndView modelAndView) {
 		Contact newContact = new Contact();
 		modelAndView.addObject("contact", newContact);
@@ -42,16 +42,23 @@ public class WelcomeController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/saveContact", method = RequestMethod.POST) // newContact ->  homepage
+	@RequestMapping(value = "/contacts", method = RequestMethod.POST) // newContact ->  homepage
 	public ModelAndView submitNewContact(@ModelAttribute Contact contact) {
 		contactCrudRepository.save(contact);
 		return new ModelAndView("redirect:/");
 	}
 
 	
-	@RequestMapping(value = "/contact/{contactId}", method = RequestMethod.DELETE) // deleteContact
+	@RequestMapping(value = "/contacts/{contactId}", method = RequestMethod.DELETE) // deleteContact
 	public ModelAndView deleteContact(@PathVariable long contactId) {
 		contactCrudRepository.delete(contactId);
 		return new ModelAndView("redirect:/");
 	}
+	
+	
+//	@RequestMapping(value = "/contacts/{contactId}", method = RequestMethod.PUT) // update
+//	public ModelAndView updateContact(@PathVariable long contactId) {
+//		contactCrudRepository.delete(contactId);
+//		return new ModelAndView("redirect:/");
+//	}	
 }

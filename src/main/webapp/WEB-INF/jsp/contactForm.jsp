@@ -10,8 +10,8 @@
 </head>
 <body>
 	<div align="center">
-		<h1>New/Edit Contact</h1>
-		<form:form action="saveContact" method="post" modelAttribute="contact">
+		<h1>New Contact</h1>
+		<form:form action="contacts" method="post" modelAttribute="contact">
 			<table>
 				<form:hidden path="id" />
 				<tr>
@@ -29,7 +29,10 @@
 				<tr>
 					<td colspan="2" align="center"><input type="submit"
 						value="Save"></td>
-						
+
+				</tr>
+				<tr>
+					<td><input type="submit" id="save" name="action" value="Save"  />
 				</tr>
 			</table>
 		</form:form>

@@ -53,11 +53,11 @@
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	<bean
-		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" /> 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
-	<jpa:repositories base-package="com.drzinks"></jpa:repositories>
+	<jpa:repositories base-package="com.drzinks"/>
 	
 </beans>
